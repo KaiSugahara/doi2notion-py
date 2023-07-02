@@ -34,21 +34,27 @@ def meta_parser(name, metadata):
 
     if name == "Year":
 
-        # Extract Year/Month
-        year, month = metadata["issued"]["date-parts"][0][:2]
+        # Extract Year
+        try:
+            year = metadata["issued"]["date-parts"][0][0]
+        except Exception:   # Terminate if paper with no data
+            return False
 
         # Add Property
         property = {
           "type": "number",
-          "number": year
+          "number": year,
         }
 
         return property
     
     if name == "Month":
 
-        # Extract Year/Month
-        year, month = metadata["issued"]["date-parts"][0][:2]
+        # Extract Month
+        try:
+            month = metadata["issued"]["date-parts"][0][1]
+        except Exception:   # Terminate if paper with no data
+            return False
 
         # Add Property
         property =  {
@@ -61,7 +67,10 @@ def meta_parser(name, metadata):
     if name == "Title":
 
         # Extract Title
-        title = metadata.get("title")[0]
+        try:
+            title = metadata.get("title")[0]
+        except Exception:   # Terminate if paper with no data
+            return False
 
         # Add Property
         property = {
@@ -76,8 +85,11 @@ def meta_parser(name, metadata):
 
     if name == "Journal":
 
-        # Extract Title
-        journal = metadata.get("container-title")[0]
+        # Extract Journal Title
+        try:
+            journal = metadata.get("container-title")[0]
+        except Exception:   # Terminate if paper with no data
+            return False
 
         # Add Property
         property = {
