@@ -1,7 +1,7 @@
 # doi2notion-py
 
 ## Overview
-与えられたDOIをもとに，文献のメタデータを検索し，検索結果をNotionデータベースに追加するPythonスクリプト
+与えられたDOIをもとに文献のメタデータを検索し，検索結果をNotionデータベースに追加するPythonスクリプト
 
 追加対象：
 - メタデータ：DOI, Title, Author(s), Journal, Year(issued), Month(issued)
@@ -19,9 +19,9 @@
 #### Step1.
 Notionの [My Integration]("https://www.notion.so/my-integrations") からシークレットキーを発行します．
 1. 「+ 新しいインテグレーション」
-1. 関連ワークスペースを選択 & 任意のインテグレーション名を「名前」に入力 → 「送信」
+1. 関連ワークスペースを選択 & インテグレーション名（任意）を入力 → 「送信」
 1. 「内部インテグレーションシークレット」をメモ
-1. 「機能」タブより「コンテンツ機能」にすべてチェックを付ける → 「変更を保存」
+1. 「機能」タブを開き，「コンテンツ機能」のすべての項目にチェックを付ける → 「変更を保存」
 
 #### Step2.
 リポジトリをクローンします．
@@ -34,7 +34,7 @@ $ git clone https://github.com/KaiSugahara/doi2notion-py.git
 ```
 
 #### Step3.
-次のカラムを持つデータベースを作成します．
+次のカラムを持つNotionデータベースを作成します．
 | Field Name | Field Type |
 | :---: | :---: |
 | DOI | `title` |
@@ -46,7 +46,7 @@ $ git clone https://github.com/KaiSugahara/doi2notion-py.git
 | Abstract | `rich_text` |
 | Citations | `number` |
 
-共有 > リンクをコピー からデータベースIDを抽出しメモします．
+続いて，`共有` > `リンクをコピー` からデータベースIDを抽出しメモします．
 ```
 https://www.notion.so/ksugahara/xxxxxxxxxxxxxxxxxxxxxxxxxxx?v=84659eea0c59489f83adb3be8fbd5023&pvs=4
 ```
@@ -57,7 +57,7 @@ https://www.notion.so/ksugahara/xxxxxxxxxxxxxxxxxxxxxxxxxxx?v=84659eea0c59489f83
 
 作成したインテグレーションに作成したデータベースへのアクセスを許可します．
 1. 対象のデータベースを開く
-1. 右上「・・・」の「コネクトの追加」
+1. 右上の $\cdots$ の `コネクトの追加`
 1. 作成したインテグレーション名を選択
 1. はい
 
@@ -85,18 +85,21 @@ NOTION_DATABASE_ID=your_database_id
 ```
 #### Step2.
 
-`add.py`を実行します．
+DOIを渡して，`add.py`を実行します．
 
 ```bash
 $ python3 add.py 10.1016/j.patcog.2023.109657
 ```
 
-#### Note.
+#### Memo.
 DOIを複数渡すこともできます．
+```bash
+$ python3 add.py 10.1016/j.patcog.2023.109657 10.1145/956750.956764 10.1007/s10115-015-0823-x
+```
 
 ### Updating Papers in Notion Database
 
-追加済みの文献の情報を一括更新できます．<br>
+追加済みの文献メタデータを最新に一括更新できます．<br>
 （メタデータは滅多に変わることはありませんが，被引用件数の更新に便利です）
 ```bash
 $ python3 update.py
