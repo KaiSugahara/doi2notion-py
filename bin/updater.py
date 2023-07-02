@@ -144,11 +144,11 @@ class updater:
         metadata = self.__get_metadata()
 
         # Construct Properties
-        self.properties = [
-            meta_parser(name, metadata)
+        self.properties = {
+            name: property
             for name in ["Authors", "Year", "Month", "Title", "Journal", "Abstract", "DOI", "Citations"]
-        ]
-        self.properties = dict(self.properties)
+            if (property := meta_parser(name, metadata)) != False
+        }
         
         return self
     

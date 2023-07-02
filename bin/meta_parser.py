@@ -30,7 +30,7 @@ def meta_parser(name, metadata):
             ]
         }
         
-        return name, property
+        return property
 
     if name == "Year":
 
@@ -43,7 +43,7 @@ def meta_parser(name, metadata):
           "number": year
         }
 
-        return name, property
+        return property
     
     if name == "Month":
 
@@ -56,7 +56,7 @@ def meta_parser(name, metadata):
           "number": month,
         }
 
-        return name, property
+        return property
 
     if name == "Title":
 
@@ -72,7 +72,7 @@ def meta_parser(name, metadata):
             }]
         }
 
-        return name, property
+        return property
 
     if name == "Journal":
 
@@ -88,15 +88,18 @@ def meta_parser(name, metadata):
             }]
         }
 
-        return name, property
+        return property
 
     if name == "Abstract":
 
         # Extract Title
         abstract = metadata.get("abstract")
-        abstract = abstract if abstract else ""
-        abstract = re.sub("<(|/)jats:p>|", "", abstract)    # Remove JATS-elements
+        
+        # Terminate if paper with no title
+        if abstract == None: return False
 
+        # Remove JATS-elements
+        abstract = re.sub("<(|/)jats:p>|", "", abstract)    
 
         # Add Property
         property = {
@@ -107,7 +110,7 @@ def meta_parser(name, metadata):
             }]
         }
 
-        return name, property
+        return property
 
     if name == "DOI":
 
@@ -123,7 +126,7 @@ def meta_parser(name, metadata):
             }]
         }
 
-        return name, property
+        return property
     
     if name == "Citations":
 
@@ -136,6 +139,6 @@ def meta_parser(name, metadata):
           "number": citations,
         }
 
-        return name, property
+        return property
     
     raise Exception("Error: Unknown name is specified.")
