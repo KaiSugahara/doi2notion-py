@@ -16,7 +16,10 @@ def meta_parser(name, metadata):
     if name == "Authors":
 
         # Extract Author Names
-        authors = [author["given"] + " " + author["family"] for author in metadata["author"]]
+        try:
+            authors = [author["given"] + " " + author["family"] for author in metadata["author"]]
+        except Exception:   # Terminate if paper with unexpected data
+            return False
         
         # Property
         property = {
