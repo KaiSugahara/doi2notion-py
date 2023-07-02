@@ -12,7 +12,7 @@
 ### Requirements
 - Notion Integration (Secret Key)
 - Python (3.9 or higher required)
-- Libraries: python-dotenv, crossrefapi, tqdm
+- Python Libraries: python-dotenv, crossrefapi, tqdm
 
 ### Preparation
 
