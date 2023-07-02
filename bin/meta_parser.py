@@ -74,6 +74,10 @@ def meta_parser(name, metadata):
             title = metadata.get("title")[0]
         except Exception:   # Terminate if paper with no data
             return False
+        
+        # Concat Subtitle if having
+        if metadata.get("subtitle"):
+            title += ": " + metadata.get("subtitle")[0]
 
         # Add Property
         property = {
