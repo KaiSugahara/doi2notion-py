@@ -58,7 +58,7 @@ class updater:
         return {
             page["properties"]["DOI"]["title"][0]["plain_text"]: page["id"]
             for page in response.json()["results"]
-            if page["properties"]["DOI"]["title"][0]["plain_text"]  # Exclude empty pages
+            if len(page["properties"]["DOI"]["title"]) > 0  # Exclude pages with empty title
         }
 
     def __add_page_to_database(self):
