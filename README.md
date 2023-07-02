@@ -3,8 +3,8 @@
 ## Overview
 DOIをもとに検索した文献のメタデータをNotionデータベースに追加するPythonスクリプト
 
-- DOIからメタデータを取得（[Crossref API]("https://github.com/fabiobatalha/crossrefapi")を使用）
-- 文献データを加工してNotionデータベースに保存（Notionインテグレーション）
+- DOIからメタデータを取得（[Crossref API](https://github.com/fabiobatalha/crossrefapi)を使用）
+- 文献データを加工してNotionデータベースに保存（[Notionインテグレーション](https://www.notion.so/my-integrations)）
 - 追加対象：
   - メタデータ：DOI, Title, Author(s), Journal, Year(issued), Month(issued)
   - 被引用件数
@@ -23,7 +23,7 @@ DOIをもとに検索した文献のメタデータをNotionデータベース�
 ### Preparation
 
 #### Step1.
-Notionの [My Integration]("https://www.notion.so/my-integrations") からシークレットキーを発行します．
+Notionの [My Integration](https://www.notion.so/my-integrations) からシークレットキーを発行します．
 1. 「+ 新しいインテグレーション」
 1. 関連ワークスペースを選択 & インテグレーション名（任意）を入力 → 「送信」
 1. 「内部インテグレーションシークレット」をメモ
