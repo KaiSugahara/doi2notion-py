@@ -56,7 +56,7 @@ class updater:
         if not response.ok: raise Exception("Invalid Certification")
 
         return {
-            page["properties"]["DOI"]["title"][0]["plain_text"]: page["id"]
+            page["properties"]["DOI"]["title"][0]["plain_text"].lower(): page["id"]
             for page in response.json()["results"]
             if len(page["properties"]["DOI"]["title"]) > 0  # Exclude pages with empty title
         }
