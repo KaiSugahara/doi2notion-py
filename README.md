@@ -1,11 +1,17 @@
 # doi2notion-py
 
 ## Overview
-与えられたDOIをもとに文献のメタデータを検索し，検索結果をNotionデータベースに追加するPythonスクリプト
+DOIをもとに検索した文献のメタデータをNotionデータベースに追加するPythonスクリプト
 
-追加対象：
-- メタデータ：DOI, Title, Author(s), Journal, Year(issued), Month(issued)
-- 被引用件数
+- DOIからメタデータを取得（[Crossref API]("https://github.com/fabiobatalha/crossrefapi")を使用）
+- 文献データを加工してNotionデータベースに保存（Notionインテグレーション）
+- 追加対象：
+  - メタデータ：DOI, Title, Author(s), Journal, Year(issued), Month(issued)
+  - 被引用件数
+ 
+### Limitations
+- DOIが付与されていない文献（一部会議など）
+- arXivなどDOIが付与されていてもCrossrefに非対応の文献
 
 ## Getting started
 
