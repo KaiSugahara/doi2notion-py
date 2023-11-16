@@ -118,14 +118,17 @@ def meta_parser(name, metadata):
         if abstract == None: return False
 
         # Remove JATS-elements
-        abstract = re.sub("<(|/)jats:p>|", "", abstract)    
+        abstract = re.sub("<(|/)jats:p>|", "", abstract)
+        
+        # Check Length due to API Limitations
+        abstract = abstract if len(abstract) <= 2000 else ""
 
         # Add Property
         property = {
             'type': 'rich_text',
             'rich_text': [{
                 "type": "text",
-                "text": { "content": (abstract if abstract else "") }
+                "text": { "content": abstract }
             }]
         }
 
