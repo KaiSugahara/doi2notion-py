@@ -11,7 +11,7 @@ class NotFoundDOI(Exception):
 
 class updater:
 
-    def __get_metadata(self):
+    def __get_metadata(self, DOI):
 
         """
             func:
@@ -22,10 +22,10 @@ class updater:
                 - the metadata
         """
 
-        self.response = Works().doi(self.DOI)
+        self.response = Works().doi(DOI)
 
         if self.response is None:
-            raise NotFoundDOI(f"Specified DOI, {self.DOI} does not exist in CrossRef API")
+            raise NotFoundDOI(f"Specified DOI, {DOI} does not exist in CrossRef API")
         
         return self.response
     
@@ -141,7 +141,7 @@ class updater:
         self.DOI = DOI.lower()
         
         # Get the Metadata(s)
-        metadata = self.__get_metadata()
+        metadata = self.__get_metadata(DOI)
 
         # Construct Properties
         self.properties = {
