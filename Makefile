@@ -4,11 +4,11 @@ YOUR_GID := ${shell id -g}
 
 add:
 	@read -p "DOIをスペース区切りで入力してください: " dois && \
-	docker compose run dev \
+	docker compose run --rm dev \
 	poetry run python3 -m doi2notion add $${dois}
 
 update:
-	docker compose run dev \
+	docker compose run --rm dev \
 	poetry run python3 -m doi2notion update
 
 dev:
