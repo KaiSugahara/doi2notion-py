@@ -1,0 +1,13 @@
+services:
+  dev:
+    image: doi2notion-dev:1.0.0
+    build:
+      context: .
+      target: dev
+      args:
+        YOUR_UID: ${YOUR_UID}
+        YOUR_GID: ${YOUR_GID}
+    volumes:
+      - ${PWD}:/app
+      - ${HOME}/.ssh:/home/user/.ssh
+    tty: true

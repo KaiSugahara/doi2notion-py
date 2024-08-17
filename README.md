@@ -17,8 +17,7 @@ DOIをもとに検索した文献のメタデータをNotionデータベース�
 
 ### Requirements
 - Notion Integration (Secret Key)
-- Python (3.9 or higher required)
-- Python Libraries: python-dotenv, crossrefapi, tqdm
+- Docker
 
 ### Preparation
 
@@ -94,13 +93,15 @@ NOTION_DATABASE_ID=your_database_id
 DOIを渡して，`add.py`を実行します．
 
 ```bash
-$ python3 add.py 10.1016/j.patcog.2023.109657
+$ make add
+DOIをスペース区切りで入力してください: 10.1016/j.patcog.2023.109657
 ```
 
 #### Memo.
 DOIを複数渡すこともできます．
 ```bash
-$ python3 add.py 10.1016/j.patcog.2023.109657 10.1145/956750.956764 10.1007/s10115-015-0823-x
+$ make add
+DOIをスペース区切りで入力してください: 10.1016/j.patcog.2023.109657 10.1145/956750.956764 10.1007/s10115-015-0823-x
 ```
 
 ### Updating Papers in Notion Database
@@ -108,5 +109,5 @@ $ python3 add.py 10.1016/j.patcog.2023.109657 10.1145/956750.956764 10.1007/s101
 追加済みの文献メタデータを最新に一括更新できます．<br>
 （メタデータは滅多に変わることはありませんが，被引用件数の更新に便利です）
 ```bash
-$ python3 update.py
+$ make update
 ```
