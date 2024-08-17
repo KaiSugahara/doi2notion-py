@@ -41,7 +41,7 @@ class NotionManager:
 
     def add_paper(self, paper: ArxivPaper | CrossRefPaper):
         if paper.doi in self.doi2pageid.keys():
-            return self.update_papers([paper])
+            return self.update_paper([paper])
         response = requests.post(
             url="https://api.notion.com/v1/pages",
             headers={
